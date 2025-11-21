@@ -1,6 +1,6 @@
 # ecommerce-store
 ## E-Commerce Store with "Every 5th Order = 10% Discount"  
-A complete implementation with **all requirements met**
+A complete implementation with **all requirements**
 
 ### Core Features
 - Add items to cart  
@@ -59,7 +59,7 @@ ecommerce-store/
 
 ---
 
-### How to Run Locally (Takes ~5 minutes)
+### How to Run Locally
 
 #### 1. Clone the repository
 ```bash
@@ -131,3 +131,4 @@ Open http://localhost:5173 – start shopping!
 ### Data in Database**
 
 ![Data in Database](screenshot_db.png)
+

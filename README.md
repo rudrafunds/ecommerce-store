@@ -20,7 +20,7 @@ A complete implementation with **all requirements**
 |--------------|----------------------------------------------|
 | Backend      | Node.js + Express + Prisma ORM + SQLite      |
 | Frontend     | React 18 + Vite + Tailwind CSS + Axios       |
-| Database     | SQLite (`prisma/dev.db`) – zero config       |
+| Database     | SQLite (`prisma/dev.db`)       |
 ---
 
 ### API Endpoints (http://localhost:3000/api)
@@ -182,6 +182,7 @@ Open http://localhost:5173 – start shopping!
 
 ### Data in Database**
 ![Data in Database](screenshot_db.png)
+
 
 
 

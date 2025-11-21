@@ -32,7 +32,6 @@ A complete implementation with **all requirements**
 | POST   | `/checkout`               | Place order (body: `{ "discountCode": "SAVE10-XYZ" }` optional) |
 | POST   | `/admin/generate-code`    | Manually generate a new discount code            |
 | GET    | `/admin/stats`            | Full analytics: orders, revenue, items sold, discount codes, etc. |
-
 ---
 
 ### Project Structure
@@ -86,7 +85,7 @@ Open http://localhost:5173 – start shopping!
 
 ---
 
-### Test the Discount Logic (Core Requirement)
+### Testing frontend: The Discount Logic (Core Requirement)
 
 1. Add any items to the cart  
 2. Checkout **5 times** (leave discount code blank)  
@@ -95,6 +94,59 @@ Open http://localhost:5173 – start shopping!
 5. On the next checkout, paste the code → you get **10% off**  
 6. Try reusing the same code → **rejected** (one-time use)  
 
+### Testing backend:  APIs in Postman
+``` {
+  "info": {
+    "name": "E-Commerce Discount Store – Full API Test",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. Add Laptop to Cart",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"id\": 1,\n  \"name\": \"Laptop\",\n  \"price\": 999\n}" },
+        "url": { "raw": "{{baseUrl}}/api/cart/add", "host": ["{{baseUrl}}"], "path": ["api","cart","add"] }
+      }
+    },
+    {
+      "name": "3. View Cart",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "{{baseUrl}}/api/cart", "host": ["{{baseUrl}}"], "path": ["api","cart"] }
+      }
+    },
+    {
+      "name": "9. View Stats & Get Discount Code",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "{{baseUrl}}/api/admin/stats", "host": ["{{baseUrl}}"], "path": ["api","admin","stats"] }
+      }
+    },
+    {
+      "name": "10. Checkout WITH Discount (Replace {{code}})",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"discountCode\": \"{{code}}\"\n}" },
+        "url": { "raw": "{{baseUrl}}/api/checkout", "host": ["{{baseUrl}}"], "path": ["api","checkout"] }
+      }
+    },
+    {
+      "name": "11. Manual Generate Code (Admin)",
+      "request": {
+        "method": "POST",
+        "url": { "raw": "{{baseUrl}}/api/admin/generate-code", "host": ["{{baseUrl}}"], "path": ["api","admin","generate-code"] }
+      }
+    }
+  ],
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:3000", "type": "string" },
+    { "key": "code", "value": "SAVE10-67c8f9ab1", "type": "string" }
+  ]
+}
+```
 ---
 
 ### Admin Tools
@@ -130,5 +182,6 @@ Open http://localhost:5173 – start shopping!
 
 ### Data in Database**
 ![Data in Database](screenshot_db.png)
+
 
 

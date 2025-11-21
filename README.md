@@ -125,6 +125,9 @@ Open http://localhost:5173 – start shopping!
 ### Ecommerce Frontend**
 ![Ecommerce Frontend](screenshot_frontend.png)
 
+### 10% Discount coupon applied at checkout **
+![10% Discount coupon ](screenshot_frontend.png)
+
 ### Data in Database**
 
 ![Data in Database](screenshot_db.png)

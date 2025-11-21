@@ -1,5 +1,5 @@
 # ecommerce-store
-# E-Commerce Store with "Every 5th Order = 10% Discount"  
+## E-Commerce Store with "Every 5th Order = 10% Discount"  
 A complete implementation with **all requirements met**
 
 ### Core Features
@@ -126,4 +126,5 @@ Open http://localhost:5173 – start shopping!
 ![Ecommerce Frontend](screenshot_frontend.png)
 
 ### Data in Database**
+
 ![Data in Database](screenshot_db.png)

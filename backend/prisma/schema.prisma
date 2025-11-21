@@ -1,0 +1,46 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model CartItem {
+  id        Int      @id @default(autoincrement())
+  productId Int
+  name      String
+  price     Float
+  quantity  Int      @default(1)
+  createdAt DateTime @default(now())
+}
+
+model DiscountCode {
+  id        Int      @id @default(autoincrement())
+  code      String   @unique
+  discount  Float    @default(10)
+  used      Boolean  @default(false)
+  usedAt    DateTime?
+  createdAt DateTime @default(now())
+}
+
+model Order {
+  id                  Int       @id @default(autoincrement())
+  totalBeforeDiscount Float
+  discountApplied     Float     @default(0)
+  total               Float
+  discountCodeUsed    String?
+  createdAt           DateTime  @default(now())
+  items               OrderItem[]
+}
+
+model OrderItem {
+  id        Int    @id @default(autoincrement())
+  orderId   Int
+  productId Int
+  name      String
+  price     Float
+  quantity  Int
+  order     Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
+}
